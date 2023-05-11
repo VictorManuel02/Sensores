@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <link rel="stylesheet" type="text/css" href="switch.css" />
+    <title>Protocolo UART</title>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Protocolo UART</h1>
+        <h2>Botones</h2>
+        <ol class="switches">
+            <li>
+                <input type="checkbox" id="1">
+                <label for="1">
+                    <span>Botón 1</span>
+                    <span></span>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="2">
+                <label for="2">
+                    <span>Botón 2</span>
+                    <span></span>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="3">
+                <label for="3">
+                    <span>Botón 3</span>
+                    <span></span>
+                </label>
+            </li>
+            <li>
+                <input type="checkbox" id="4">
+                <label for="4">
+                    <span>Botón 4</span>
+                    <span></span>
+                </label>
+            </li>
+        </ol>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <h2>Leds</h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="row">
+            <div class="col">
+                <button class="btn-neon" id="led1">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 1
+                </button>
+                <button class="btn-neon" id="led2">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 2
+                </button>
+                <button class="btn-neon" id="led3">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 3
+                </button>
+                <button type="button" class="btn-neon" id="led4">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 4
+                </button>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col">
+                <button class="btn-neon" id="led5">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 5
+                </button>
+                <button class="btn-neon" id="led6">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 6
+                </button>
+                <button class="btn-neon" id="led7">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 7
+                </button>
+                <button class="btn-neon" id="led8">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                    <span id="span4"></span>
+                    LED 8
+                </button>
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <h2>Gráfica</h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <canvas id="grafica"></canvas>
+        <script src="script.js"></script>
+    </div>
+            <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="index.js"></script>
+            <script>
+                    var socket = io();
+                    var acu = 0;
+
+                    function Led1() {
+                        socket.emit('Led1');
+                    }
+                    function Led2() {
+                        socket.emit('Led2');
+                    }
+                    function Led3() {
+                        socket.emit('Led3');
+                    }
+                    function Led4() {
+                        socket.emit('Led4');
+                    }
+                    function Led5() {
+                        socket.emit('Led5');
+                    }
+                    function Led6() {
+                        socket.emit('Led6');
+                    }
+                    function Led7() {
+                        socket.emit('Led7');
+                    }
+                    function Led8() {
+                        socket.emit('Led8');
+                    }
+
+                    function Led1n() {
+                        socket.emit('Led1n');
+                    }
+                    function Led2n() {
+                        socket.emit('Led2n');
+                    }
+                    function Led3n() {
+                        socket.emit('Led3n');
+                    }
+                    function Led4n() {
+                        socket.emit('Led4n');
+                    }
+                    function Led5n() {
+                        socket.emit('Led5n');
+                    }
+                    function Led6n() {
+                        socket.emit('Led6n');
+                    }
+                    function Led7n() {
+                        socket.emit('Led7n');
+                    }
+                    function Led8n() {
+                        socket.emit('Led8n');
+                    }
+                    if (acu == 0) {
+                        document.getElementById('led1').onclick = Led1n;
+                        acu = acu + 1;
+                    }
+                    else {
+                        document.getElementById('led1').onclick = Led1n;
+                        acu = 0;
+                    }
+                document.getElementById('led2').onclick = Led2;
+                document.getElementById('led3').onclick = Led3;
+                document.getElementById('led4').onclick = Led4;
+                document.getElementById('led5').onclick = Led5;
+                document.getElementById('led6').onclick = Led6;
+                document.getElementById('led7').onclick = Led7;
+                document.getElementById('led8').onclick = Led8;
+
+
+            </script>
+</body>
+</html>
